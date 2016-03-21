@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<TITLE>MyActiveX</TITLE>
+ <script type="text/javascript">
+        //插件安装成功之后，就可以使用这种方式进行检测
+        function test() {
+            try {
+                var test = new ActiveXObject("MyActiveX1");
+                if (test == undefined)
+                { alert("underfined");return false; }
+                else
+                { return true; }
+            }
+            catch (e) {
+			alert("exception");
+			alert(e.message);
+                return false;
+            }
+        };
+		</script>
+</HEAD>
+<BODY>
+<center>
+MyActiveX Example
+<p></p>
+
+
+<div>
+<OBJECT ID="MyActiveX1" WIDTH=480 HEIGHT=320
+ CLASSID="CLSID:36299202-09EF-4ABF-ADB9-47C599DBE778" codebase="myactivex.cab#version=1,0,0,1">
+    <!--PARAM NAME="_Version" VALUE="65536">
+    <PARAM NAME="_ExtentX" VALUE="2646">
+    <PARAM NAME="_ExtentY" VALUE="1323">
+    <PARAM NAME="_StockProps" VALUE="0"-->
+</OBJECT>
+</div>
+
+<input type="button" name="testfunction" ONCLICK=PassParameter()> </input>
+
+<SCRIPT LANGUAGE="JavaScript">
+ 
+function PassParameter()
+{
+    //if (StringInput.value != " ")
+	try
+    {
+        
+        var a = MyActiveX1.TestMyMethod("172.20.129.159", "50030", "admin", "A1crUF4=");
+		
+    }
+	catch(e)
+	{
+		alert(e.message);
+	}
+}
+</SCRIPT>
+
+</center>
+</BODY>
+</HTML>

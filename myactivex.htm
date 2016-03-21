@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<TITLE>MyActiveX</TITLE>
+ <script type="text/javascript">
+        //插件安装成功之后，就可以使用这种方式进行检测
+        function test() {
+            try {
+                var test = new ActiveXObject("MyActiveX1");
+                if (test == undefined)
+                { alert("underfined");return false; }
+                else
+                { return true; }
+            }
+            catch (e) {
+			alert("exception");
+			alert(e.message);
+                return false;
+            }
+        };
+		</script>
+</HEAD>
+<BODY>
+<center>
+MyActiveX Example
+<p></p>
+
+
+<div>
+<OBJECT ID="MyActiveX1" WIDTH=480 HEIGHT=320
+ CLASSID="CLSID:36299202-09EF-4ABF-ADB9-47C599DBE778" >
+    <!--PARAM NAME="_Version" VALUE="65536">
+    <PARAM NAME="_ExtentX" VALUE="2646">
+    <PARAM NAME="_ExtentY" VALUE="1323">
+    <PARAM NAME="_StockProps" VALUE="0"-->
+</OBJECT>
+</div>
+<div>
+<OBJECT ID="MyActiveX2" WIDTH=480 HEIGHT=320
+ CLASSID="CLSID:36299202-09EF-4ABF-ADB9-47C599DBE778" >
+    <!--PARAM NAME="_Version" VALUE="65536">
+    <PARAM NAME="_ExtentX" VALUE="2646">
+    <PARAM NAME="_ExtentY" VALUE="1323">
+    <PARAM NAME="_StockProps" VALUE="0"-->
+</OBJECT>
+</div>
+<input type="button" name="testfunction" ONCLICK=PassParameter()> </input>
+
+<SCRIPT LANGUAGE="JavaScript">
+ 
+function PassParameter()
+{
+    //if (StringInput.value != " ")
+	try
+    {
+        
+        var a = MyActiveX1.TestMyMethod("172.20.10.12", "50010", "admin", "A1crUF4=");
+		var b = MyActiveX2.TestMyMethod("172.20.10.12", "50010", "admin", "A1crUF4=");
+		//alert(a);
+    }
+	catch(e)
+	{
+		alert(e.message);
+	}
+}
+</SCRIPT>
+
+</center>
+</BODY>
+</HTML>
